@@ -73,9 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
       context: ctx,
       builder: (_) {
-        return NewTransaction(_addNewTransaction);
+        return GestureDetector(
+          onTap: () {},
+          child: NewTransaction(_addNewTransaction),
+          behavior: HitTestBehavior.opaque,
+        );
       },
     );
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransaction.removeWhere((tx) => tx.id == id);
+    });
   }
 
   @override
@@ -95,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Chart(_recentTransaction),
-            TransactionList(_userTransaction),
+            TransactionList(_userTransaction, _deleteTransaction),
           ],
           //mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
