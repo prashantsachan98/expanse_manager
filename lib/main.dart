@@ -3,6 +3,7 @@ import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './models/transaction.dart';
 import './widgets/transaction_list.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 
 void main() => runApp(MyApp());
 
@@ -99,6 +100,31 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () => _startAddNewTransaction(context),
             color: Colors.white,
           ),
+          IconButton(
+              icon: Icon(Icons.help),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => NetworkGiffyDialog(
+                    image: Image.network(
+                        "https://media.tenor.com/images/a852b4ee232352fe6ec6487462ffe221/tenor.gif"),
+                    title: Text(
+                      'Help!',
+                      style: TextStyle(
+                          color: Colors.red[400],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    description: Text(
+                      'Dude this app is all abaout money managemnet',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontWeight: FontWeight.w300),
+                    ),
+                    onOkButtonPressed: () {},
+                    entryAnimation: EntryAnimation.BOTTOM_LEFT,
+                  ),
+                );
+              }),
         ],
       ),
       body: SingleChildScrollView(
