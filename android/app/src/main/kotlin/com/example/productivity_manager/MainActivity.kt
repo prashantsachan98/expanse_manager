@@ -1,4 +1,4 @@
-package com.example.productivity_manager
+package com.example.expense_manager
 
 import io.flutter.embedding.android.FlutterActivity
 
